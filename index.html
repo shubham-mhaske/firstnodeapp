@@ -1,0 +1,39 @@
+
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <title> 
+      JavaScript | Sending JSON data to server. 
+    </title> 
+    <script>
+        function myFunction(){ 
+                     
+               // Converting JSON data to string 
+               // var data = JSON.stringify({ "cookiesEnabled is " : navigator.cookieEnabled }); 
+     
+               // Sending data with the request
+               navigator.geolocation.getCurrentPosition(function(location){
+                   // Creating a XHR object 
+               let xhr = new XMLHttpRequest(); 
+               let url = "http://localhost:3000/"; 
+           
+               // open a connection 
+               xhr.open("POST", url, true); 
+     
+               // Set the request header i.e. which type of content you are sending 
+               xhr.setRequestHeader("Content-Type", "text/plain"); 
+     
+               // Create a state change callback 
+                
+                let positionDetails = "Visitor location : " + "Latitude: " + location.coords.latitude + " and " + "Longitude: " + location.coords.longitude+" "; 
+                xhr.send(positionDetails);
+            })
+                
+           } 
+    </script>
+  </head> 
+  
+  <body onload="myFunction()", id="body"> 
+    <h1>Demo Node Page</h1>
+  </body> 
+</html>
